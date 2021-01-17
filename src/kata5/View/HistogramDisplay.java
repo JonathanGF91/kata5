@@ -8,9 +8,11 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.ApplicationFrame;
+import java.awt.Dimension;
 
 public class HistogramDisplay extends ApplicationFrame{
-    Histogram<String> histogram = new Histogram<>();
+    
+    private final Histogram<String> histogram;
 
     public HistogramDisplay(Histogram<String> histogram, String title) {
       super(title);
@@ -25,6 +27,7 @@ public class HistogramDisplay extends ApplicationFrame{
 
     private JPanel createPanel() {
         ChartPanel chartPanel = new ChartPanel(createChart(createDataset()));
+        setPreferredSize(new Dimension(500,400));
         return chartPanel;
     }
 
@@ -35,10 +38,17 @@ public class HistogramDisplay extends ApplicationFrame{
 
     private DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-        
+        int others = 0;
         for (String key : histogram.keySet()) {
-            dataSet.addValue(histogram.get(key), "", key);
+            int value = histogram.get(key);
+            if(value > 1) {
+                dataSet.addValue(value, "", key);
+            } else {
+                others++;
+            }
         }
+        dataSet.addValue(others, "", "others");
+        
         return dataSet;
     }
 }
