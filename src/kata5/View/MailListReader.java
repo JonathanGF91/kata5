@@ -22,9 +22,9 @@ public class MailListReader {
                String line = reader.readLine(); 
                if(line == null) break;
                
-               if(Mail.isMail(line)){
-                   list.add(new Mail(line));
-               }
+               if(MailParser.isMail(line)) {
+                    list.add(new Mail(line));
+                }
             }
             
         } catch (FileNotFoundException ex) {

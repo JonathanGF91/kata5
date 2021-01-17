@@ -12,7 +12,7 @@ public class Mail {
         return mail.substring(mail.indexOf("@") + 1);
     }
     
-    public static boolean isMail(String line) {
-        return line.matches("[^@]+@[^@]+\\.[a-zA-Z]{2,}");
+    public String getMail() {
+        return mail;
     }    
 }

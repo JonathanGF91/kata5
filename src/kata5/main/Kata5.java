@@ -3,14 +3,14 @@ package kata5.main;
 
 import java.sql.*;
 import java.util.List;
-import kata5.model.Histogram;
-import kata5.view.HistogramDisplay;
-import kata5.view.MailHistogramBuilder;
-import kata5.view.MailListReaderBD;
+import kata5.Model.Histogram;
+import kata5.View.HistogramDisplay;
+import kata5.View.MailHistogramBuilder;
+import kata5.View.MailListReaderBD;
 
 public class Kata5 {
 
-     private static List<String> mailList;
+    private static List<String> mailList;
     private static Histogram<String> mailHistogram;
     
     public static void main(String[] args) throws ClassNotFoundException, SQLException { 
@@ -32,6 +32,6 @@ public class Kata5 {
     }
    
     private static void output() {
-        new HistogramDisplay(mailHistogram).execute();
+        new HistogramDisplay(mailHistogram, "Histogram").execute();
     }
 }

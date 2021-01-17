@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import kata5.model.Mail;
+import kata5.Model.Mail;
 
 public class MailListReaderBD {
     public static List<String> read() throws ClassNotFoundException, SQLException {
